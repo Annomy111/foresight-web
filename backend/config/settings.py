@@ -26,11 +26,9 @@ class ModelConfig(BaseModel):
     """Model configuration settings"""
     enabled_models: List[str] = Field(
         default=[
-            "google/gemini-2.0-flash-exp",
-            "openai/gpt-4-turbo-preview",
-            "anthropic/claude-3-opus-20240229",
-            "x-ai/grok-beta",
-            "deepseek/deepseek-chat"
+            "x-ai/grok-4-fast:free",
+            "deepseek/deepseek-r1:free",
+            "qwen/qwen3-8b:free"
         ],
         description="List of models to use"
     )

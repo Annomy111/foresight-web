@@ -125,6 +125,24 @@ async def health_check():
     """Health check endpoint"""
     return {"status": "healthy", "timestamp": datetime.now().isoformat()}
 
+# Debug endpoint
+@app.get("/debug/config")
+async def debug_config():
+    """Debug endpoint to check configuration"""
+    settings = load_settings()
+    api_key = settings.get('OPENROUTER_API_KEY', 'NOT_SET')
+
+    return {
+        "api_key_configured": bool(api_key and api_key != 'NOT_SET' and api_key != 'your_openrouter_api_key_here'),
+        "api_key_prefix": api_key[:10] + "..." if api_key and len(api_key) > 10 else api_key,
+        "enabled_models": settings.get('ENABLED_MODELS', '').split(','),
+        "iterations_per_model": settings.get('ITERATIONS_PER_MODEL', '10'),
+        "environment": {
+            "OPENROUTER_API_KEY1": bool(os.getenv('OPENROUTER_API_KEY1')),
+            "BACKEND_URL": os.getenv('BACKEND_URL', 'NOT_SET')
+        }
+    }
+
 # Main forecast endpoint
 @app.post("/api/forecast", response_model=ForecastResponse)
 async def create_forecast(request: ForecastRequest, background_tasks: BackgroundTasks):

@@ -2,7 +2,7 @@
 const https = require('https');
 
 // Backend URL - update this when deployed to Railway/Render
-const BACKEND_URL = process.env.BACKEND_URL || 'http://localhost:8000';
+const BACKEND_URL = process.env.BACKEND_URL || 'https://foresight-backend-api.onrender.com';
 
 exports.handler = async (event, context) => {
   // CORS headers
