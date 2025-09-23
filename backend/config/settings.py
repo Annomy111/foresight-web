@@ -26,7 +26,8 @@ class ModelConfig(BaseModel):
     """Model configuration settings"""
     enabled_models: List[str] = Field(
         default=[
-            # Verified working free models (Sept 2025)
+            # Verified working free models (Sept 2025) - INCLUDING GROK-4 FAST!
+            "x-ai/grok-4-fast:free",  # NEW! Currently free on OpenRouter
             "google/gemma-2b-it:free",
             "mistralai/mistral-7b-instruct:free",
             "nousresearch/hermes-3-llama-3.1-8b:free",
