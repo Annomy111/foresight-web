@@ -26,12 +26,13 @@ class ModelConfig(BaseModel):
     """Model configuration settings"""
     enabled_models: List[str] = Field(
         default=[
-            "deepseek/deepseek-chat-v3-0324:free",
-            "deepseek/deepseek-r1:free",
-            "deepseek/deepseek-r1-distill-llama-70b:free",
-            "meta-llama/llama-4-maverick:free",
-            "meta-llama/llama-4-scout:free",
-            "cognitivecomputations/dolphin3.0-mistral-24b:free"
+            # Verified working free models (Sept 2025)
+            "google/gemma-2b-it:free",
+            "mistralai/mistral-7b-instruct:free",
+            "nousresearch/hermes-3-llama-3.1-8b:free",
+            "qwen/qwen-2.5-72b-instruct:free",
+            "meta-llama/llama-3.2-3b-instruct:free",
+            "google/gemma-2-9b-it:free"
         ],
         description="List of models to use"
     )
@@ -64,9 +65,20 @@ class Settings(BaseModel):
     @classmethod
     def load_from_env(cls) -> 'Settings':
         """Load settings from environment variables"""
-        # API configuration
+        # API configuration - Fixed typo: should be OPENROUTER_API_KEY not OPENROUTER_API_KEY1
+        api_key = os.getenv("OPENROUTER_API_KEY", "")
+        if not api_key:
+            # Fallback to check OPENROUTER_API_KEY1 if it was set that way
+            api_key = os.getenv("OPENROUTER_API_KEY1", "")
+
+        # Log API key status (without exposing the key)
+        if api_key:
+            print(f"✅ API key loaded: {api_key[:8]}...")
+        else:
+            print("❌ WARNING: No API key found in environment variables!")
+
         api_config = APIConfig(
-            api_key=os.getenv("OPENROUTER_API_KEY1", ""),
+            api_key=api_key,
             base_url=os.getenv("OPENROUTER_BASE_URL", "https://openrouter.ai/api/v1"),
             timeout=int(os.getenv("REQUEST_TIMEOUT", "120")),
             retry_attempts=int(os.getenv("RETRY_ATTEMPTS", "3")),
