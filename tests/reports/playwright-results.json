@@ -1,0 +1,725 @@
+{
+  "config": {
+    "configFile": "/Users/winzendwyers/Forsight/foresight-web/playwright.config.ts",
+    "rootDir": "/Users/winzendwyers/Forsight/foresight-web/tests/e2e",
+    "forbidOnly": false,
+    "fullyParallel": true,
+    "globalSetup": "/Users/winzendwyers/Forsight/foresight-web/tests/config/global-setup.ts",
+    "globalTeardown": "/Users/winzendwyers/Forsight/foresight-web/tests/config/global-teardown.ts",
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 0,
+    "metadata": {
+      "actualWorkers": 6
+    },
+    "preserveOutput": "always",
+    "reporter": [
+      [
+        "html",
+        {
+          "outputFolder": "tests/reports/playwright-html"
+        }
+      ],
+      [
+        "junit",
+        {
+          "outputFile": "tests/reports/playwright-results.xml"
+        }
+      ],
+      [
+        "json",
+        {
+          "outputFile": "tests/reports/playwright-results.json"
+        }
+      ],
+      [
+        "list",
+        null
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 300000
+    },
+    "quiet": false,
+    "projects": [
+      {
+        "outputDir": "/Users/winzendwyers/Forsight/foresight-web/tests/reports/test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 6
+        },
+        "id": "chromium",
+        "name": "chromium",
+        "testDir": "/Users/winzendwyers/Forsight/foresight-web/tests/e2e",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 60000
+      },
+      {
+        "outputDir": "/Users/winzendwyers/Forsight/foresight-web/tests/reports/test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 6
+        },
+        "id": "firefox",
+        "name": "firefox",
+        "testDir": "/Users/winzendwyers/Forsight/foresight-web/tests/e2e",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 60000
+      },
+      {
+        "outputDir": "/Users/winzendwyers/Forsight/foresight-web/tests/reports/test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 6
+        },
+        "id": "webkit",
+        "name": "webkit",
+        "testDir": "/Users/winzendwyers/Forsight/foresight-web/tests/e2e",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 60000
+      },
+      {
+        "outputDir": "/Users/winzendwyers/Forsight/foresight-web/tests/reports/test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 6
+        },
+        "id": "Mobile Chrome",
+        "name": "Mobile Chrome",
+        "testDir": "/Users/winzendwyers/Forsight/foresight-web/tests/e2e",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 60000
+      },
+      {
+        "outputDir": "/Users/winzendwyers/Forsight/foresight-web/tests/reports/test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 6
+        },
+        "id": "Mobile Safari",
+        "name": "Mobile Safari",
+        "testDir": "/Users/winzendwyers/Forsight/foresight-web/tests/e2e",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 60000
+      },
+      {
+        "outputDir": "/Users/winzendwyers/Forsight/foresight-web/tests/reports/test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 6
+        },
+        "id": "Microsoft Edge",
+        "name": "Microsoft Edge",
+        "testDir": "/Users/winzendwyers/Forsight/foresight-web/tests/e2e",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 60000
+      }
+    ],
+    "shard": null,
+    "updateSnapshots": "missing",
+    "updateSourceMethod": "patch",
+    "version": "1.55.0",
+    "workers": 6,
+    "webServer": null
+  },
+  "suites": [
+    {
+      "title": "homepage.spec.ts",
+      "file": "homepage.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [],
+      "suites": [
+        {
+          "title": "Homepage - UI Components and Navigation",
+          "file": "homepage.spec.ts",
+          "line": 3,
+          "column": 6,
+          "specs": [
+            {
+              "title": "should load homepage with correct title and meta information",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 545,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2025-09-22T21:47:01.934Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "84e7eb052e8cbae1c9f0-b1104f7ef43a33a9f17c",
+              "file": "homepage.spec.ts",
+              "line": 8,
+              "column": 7
+            },
+            {
+              "title": "should display forecast form with all required fields",
+              "ok": false,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 1,
+                      "parallelIndex": 1,
+                      "status": "failed",
+                      "duration": 11368,
+                      "error": {
+                        "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeEnabled\u001b[2m()\u001b[22m failed\n\nLocator:  locator('button:has-text(\"Start Forecast\")')\nExpected: enabled\nReceived: disabled\nTimeout:  10000ms\n\nCall log:\n\u001b[2m  - Expect \"toBeEnabled\" with timeout 10000ms\u001b[22m\n\u001b[2m  - waiting for locator('button:has-text(\"Start Forecast\")')\u001b[22m\n\u001b[2m    14 × locator resolved to <button disabled class=\"w-full py-4 bg-gradient-to-r from-brand-primary to-brand-secondary text-white rounded-lg font-medium hover:opacity-90 transition-opacity disabled:opacity-50\">Start Forecast</button>\u001b[22m\n\u001b[2m       - unexpected value \"disabled\"\u001b[22m\n",
+                        "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeEnabled\u001b[2m()\u001b[22m failed\n\nLocator:  locator('button:has-text(\"Start Forecast\")')\nExpected: enabled\nReceived: disabled\nTimeout:  10000ms\n\nCall log:\n\u001b[2m  - Expect \"toBeEnabled\" with timeout 10000ms\u001b[22m\n\u001b[2m  - waiting for locator('button:has-text(\"Start Forecast\")')\u001b[22m\n\u001b[2m    14 × locator resolved to <button disabled class=\"w-full py-4 bg-gradient-to-r from-brand-primary to-brand-secondary text-white rounded-lg font-medium hover:opacity-90 transition-opacity disabled:opacity-50\">Start Forecast</button>\u001b[22m\n\u001b[2m       - unexpected value \"disabled\"\u001b[22m\n\n    at /Users/winzendwyers/Forsight/foresight-web/tests/e2e/homepage.spec.ts:40:32",
+                        "location": {
+                          "file": "/Users/winzendwyers/Forsight/foresight-web/tests/e2e/homepage.spec.ts",
+                          "column": 32,
+                          "line": 40
+                        },
+                        "snippet": "  38 |     const submitButton = page.locator('button:has-text(\"Start Forecast\")')\n  39 |     await expect(submitButton).toBeVisible()\n> 40 |     await expect(submitButton).toBeEnabled()\n     |                                ^\n  41 |   })\n  42 |\n  43 |   test('should display model selection interface', async ({ page }) => {"
+                      },
+                      "errors": [
+                        {
+                          "location": {
+                            "file": "/Users/winzendwyers/Forsight/foresight-web/tests/e2e/homepage.spec.ts",
+                            "column": 32,
+                            "line": 40
+                          },
+                          "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeEnabled\u001b[2m()\u001b[22m failed\n\nLocator:  locator('button:has-text(\"Start Forecast\")')\nExpected: enabled\nReceived: disabled\nTimeout:  10000ms\n\nCall log:\n\u001b[2m  - Expect \"toBeEnabled\" with timeout 10000ms\u001b[22m\n\u001b[2m  - waiting for locator('button:has-text(\"Start Forecast\")')\u001b[22m\n\u001b[2m    14 × locator resolved to <button disabled class=\"w-full py-4 bg-gradient-to-r from-brand-primary to-brand-secondary text-white rounded-lg font-medium hover:opacity-90 transition-opacity disabled:opacity-50\">Start Forecast</button>\u001b[22m\n\u001b[2m       - unexpected value \"disabled\"\u001b[22m\n\n\n  38 |     const submitButton = page.locator('button:has-text(\"Start Forecast\")')\n  39 |     await expect(submitButton).toBeVisible()\n> 40 |     await expect(submitButton).toBeEnabled()\n     |                                ^\n  41 |   })\n  42 |\n  43 |   test('should display model selection interface', async ({ page }) => {\n    at /Users/winzendwyers/Forsight/foresight-web/tests/e2e/homepage.spec.ts:40:32"
+                        }
+                      ],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2025-09-22T21:47:01.937Z",
+                      "annotations": [],
+                      "attachments": [
+                        {
+                          "name": "screenshot",
+                          "contentType": "image/png",
+                          "path": "/Users/winzendwyers/Forsight/foresight-web/tests/reports/test-results/homepage-Homepage---UI-Com-c969b-rm-with-all-required-fields-chromium/test-failed-1.png"
+                        },
+                        {
+                          "name": "video",
+                          "contentType": "video/webm",
+                          "path": "/Users/winzendwyers/Forsight/foresight-web/tests/reports/test-results/homepage-Homepage---UI-Com-c969b-rm-with-all-required-fields-chromium/video.webm"
+                        },
+                        {
+                          "name": "error-context",
+                          "contentType": "text/markdown",
+                          "path": "/Users/winzendwyers/Forsight/foresight-web/tests/reports/test-results/homepage-Homepage---UI-Com-c969b-rm-with-all-required-fields-chromium/error-context.md"
+                        }
+                      ],
+                      "errorLocation": {
+                        "file": "/Users/winzendwyers/Forsight/foresight-web/tests/e2e/homepage.spec.ts",
+                        "column": 32,
+                        "line": 40
+                      }
+                    }
+                  ],
+                  "status": "unexpected"
+                }
+              ],
+              "id": "84e7eb052e8cbae1c9f0-95f881821e10f2e048ec",
+              "file": "homepage.spec.ts",
+              "line": 19,
+              "column": 7
+            },
+            {
+              "title": "should display model selection interface",
+              "ok": false,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 2,
+                      "parallelIndex": 2,
+                      "status": "failed",
+                      "duration": 11233,
+                      "error": {
+                        "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m()\u001b[22m failed\n\nLocator:  locator('input[type=\"number\"]')\nExpected: visible\nReceived: <element(s) not found>\nTimeout:  10000ms\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" with timeout 10000ms\u001b[22m\n\u001b[2m  - waiting for locator('input[type=\"number\"]')\u001b[22m\n",
+                        "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m()\u001b[22m failed\n\nLocator:  locator('input[type=\"number\"]')\nExpected: visible\nReceived: <element(s) not found>\nTimeout:  10000ms\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" with timeout 10000ms\u001b[22m\n\u001b[2m  - waiting for locator('input[type=\"number\"]')\u001b[22m\n\n    at /Users/winzendwyers/Forsight/foresight-web/tests/e2e/homepage.spec.ts:58:35",
+                        "location": {
+                          "file": "/Users/winzendwyers/Forsight/foresight-web/tests/e2e/homepage.spec.ts",
+                          "column": 35,
+                          "line": 58
+                        },
+                        "snippet": "  56 |     // Check for iterations number input\n  57 |     const iterationsInput = page.locator('input[type=\"number\"]')\n> 58 |     await expect(iterationsInput).toBeVisible()\n     |                                   ^\n  59 |   })\n  60 |\n  61 |   test('should show responsive design on different screen sizes', async ({ page }) => {"
+                      },
+                      "errors": [
+                        {
+                          "location": {
+                            "file": "/Users/winzendwyers/Forsight/foresight-web/tests/e2e/homepage.spec.ts",
+                            "column": 35,
+                            "line": 58
+                          },
+                          "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m()\u001b[22m failed\n\nLocator:  locator('input[type=\"number\"]')\nExpected: visible\nReceived: <element(s) not found>\nTimeout:  10000ms\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" with timeout 10000ms\u001b[22m\n\u001b[2m  - waiting for locator('input[type=\"number\"]')\u001b[22m\n\n\n  56 |     // Check for iterations number input\n  57 |     const iterationsInput = page.locator('input[type=\"number\"]')\n> 58 |     await expect(iterationsInput).toBeVisible()\n     |                                   ^\n  59 |   })\n  60 |\n  61 |   test('should show responsive design on different screen sizes', async ({ page }) => {\n    at /Users/winzendwyers/Forsight/foresight-web/tests/e2e/homepage.spec.ts:58:35"
+                        }
+                      ],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2025-09-22T21:47:01.934Z",
+                      "annotations": [],
+                      "attachments": [
+                        {
+                          "name": "screenshot",
+                          "contentType": "image/png",
+                          "path": "/Users/winzendwyers/Forsight/foresight-web/tests/reports/test-results/homepage-Homepage---UI-Com-ebf2a-y-model-selection-interface-chromium/test-failed-1.png"
+                        },
+                        {
+                          "name": "video",
+                          "contentType": "video/webm",
+                          "path": "/Users/winzendwyers/Forsight/foresight-web/tests/reports/test-results/homepage-Homepage---UI-Com-ebf2a-y-model-selection-interface-chromium/video.webm"
+                        },
+                        {
+                          "name": "error-context",
+                          "contentType": "text/markdown",
+                          "path": "/Users/winzendwyers/Forsight/foresight-web/tests/reports/test-results/homepage-Homepage---UI-Com-ebf2a-y-model-selection-interface-chromium/error-context.md"
+                        }
+                      ],
+                      "errorLocation": {
+                        "file": "/Users/winzendwyers/Forsight/foresight-web/tests/e2e/homepage.spec.ts",
+                        "column": 35,
+                        "line": 58
+                      }
+                    }
+                  ],
+                  "status": "unexpected"
+                }
+              ],
+              "id": "84e7eb052e8cbae1c9f0-9b837f9fd20f5adf18d3",
+              "file": "homepage.spec.ts",
+              "line": 43,
+              "column": 7
+            },
+            {
+              "title": "should show responsive design on different screen sizes",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 3,
+                      "parallelIndex": 3,
+                      "status": "passed",
+                      "duration": 548,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2025-09-22T21:47:01.934Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "84e7eb052e8cbae1c9f0-47758d3a8be559ea306f",
+              "file": "homepage.spec.ts",
+              "line": 61,
+              "column": 7
+            },
+            {
+              "title": "should display error states for empty form submission",
+              "ok": false,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 4,
+                      "parallelIndex": 4,
+                      "status": "failed",
+                      "duration": 31541,
+                      "error": {
+                        "message": "TimeoutError: locator.click: Timeout 30000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('button[type=\"submit\"], button:has-text(\"Start Forecast\")')\u001b[22m\n\u001b[2m    - locator resolved to <button disabled class=\"w-full py-4 bg-gradient-to-r from-brand-primary to-brand-secondary text-white rounded-lg font-medium hover:opacity-90 transition-opacity disabled:opacity-50\">Start Forecast</button>\u001b[22m\n\u001b[2m  - attempting click action\u001b[22m\n\u001b[2m    2 × waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m      - element is not stable\u001b[22m\n\u001b[2m    - retrying click action\u001b[22m\n\u001b[2m    - waiting 20ms\u001b[22m\n\u001b[2m    2 × waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m      - element is not stable\u001b[22m\n\u001b[2m    - retrying click action\u001b[22m\n\u001b[2m      - waiting 100ms\u001b[22m\n\u001b[2m    58 × waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m       - element is not enabled\u001b[22m\n\u001b[2m     - retrying click action\u001b[22m\n\u001b[2m       - waiting 500ms\u001b[22m\n",
+                        "stack": "TimeoutError: locator.click: Timeout 30000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('button[type=\"submit\"], button:has-text(\"Start Forecast\")')\u001b[22m\n\u001b[2m    - locator resolved to <button disabled class=\"w-full py-4 bg-gradient-to-r from-brand-primary to-brand-secondary text-white rounded-lg font-medium hover:opacity-90 transition-opacity disabled:opacity-50\">Start Forecast</button>\u001b[22m\n\u001b[2m  - attempting click action\u001b[22m\n\u001b[2m    2 × waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m      - element is not stable\u001b[22m\n\u001b[2m    - retrying click action\u001b[22m\n\u001b[2m    - waiting 20ms\u001b[22m\n\u001b[2m    2 × waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m      - element is not stable\u001b[22m\n\u001b[2m    - retrying click action\u001b[22m\n\u001b[2m      - waiting 100ms\u001b[22m\n\u001b[2m    58 × waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m       - element is not enabled\u001b[22m\n\u001b[2m     - retrying click action\u001b[22m\n\u001b[2m       - waiting 500ms\u001b[22m\n\n    at /Users/winzendwyers/Forsight/foresight-web/tests/e2e/homepage.spec.ts:82:24",
+                        "location": {
+                          "file": "/Users/winzendwyers/Forsight/foresight-web/tests/e2e/homepage.spec.ts",
+                          "column": 24,
+                          "line": 82
+                        },
+                        "snippet": "  80 |     // Try to submit empty form\n  81 |     const submitButton = page.locator('button[type=\"submit\"], button:has-text(\"Start Forecast\")')\n> 82 |     await submitButton.click()\n     |                        ^\n  83 |\n  84 |     // Wait for potential error messages\n  85 |     await page.waitForTimeout(1000)"
+                      },
+                      "errors": [
+                        {
+                          "location": {
+                            "file": "/Users/winzendwyers/Forsight/foresight-web/tests/e2e/homepage.spec.ts",
+                            "column": 24,
+                            "line": 82
+                          },
+                          "message": "TimeoutError: locator.click: Timeout 30000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('button[type=\"submit\"], button:has-text(\"Start Forecast\")')\u001b[22m\n\u001b[2m    - locator resolved to <button disabled class=\"w-full py-4 bg-gradient-to-r from-brand-primary to-brand-secondary text-white rounded-lg font-medium hover:opacity-90 transition-opacity disabled:opacity-50\">Start Forecast</button>\u001b[22m\n\u001b[2m  - attempting click action\u001b[22m\n\u001b[2m    2 × waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m      - element is not stable\u001b[22m\n\u001b[2m    - retrying click action\u001b[22m\n\u001b[2m    - waiting 20ms\u001b[22m\n\u001b[2m    2 × waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m      - element is not stable\u001b[22m\n\u001b[2m    - retrying click action\u001b[22m\n\u001b[2m      - waiting 100ms\u001b[22m\n\u001b[2m    58 × waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m       - element is not enabled\u001b[22m\n\u001b[2m     - retrying click action\u001b[22m\n\u001b[2m       - waiting 500ms\u001b[22m\n\n\n  80 |     // Try to submit empty form\n  81 |     const submitButton = page.locator('button[type=\"submit\"], button:has-text(\"Start Forecast\")')\n> 82 |     await submitButton.click()\n     |                        ^\n  83 |\n  84 |     // Wait for potential error messages\n  85 |     await page.waitForTimeout(1000)\n    at /Users/winzendwyers/Forsight/foresight-web/tests/e2e/homepage.spec.ts:82:24"
+                        }
+                      ],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2025-09-22T21:47:01.935Z",
+                      "annotations": [],
+                      "attachments": [
+                        {
+                          "name": "screenshot",
+                          "contentType": "image/png",
+                          "path": "/Users/winzendwyers/Forsight/foresight-web/tests/reports/test-results/homepage-Homepage---UI-Com-519bb-s-for-empty-form-submission-chromium/test-failed-1.png"
+                        },
+                        {
+                          "name": "video",
+                          "contentType": "video/webm",
+                          "path": "/Users/winzendwyers/Forsight/foresight-web/tests/reports/test-results/homepage-Homepage---UI-Com-519bb-s-for-empty-form-submission-chromium/video.webm"
+                        },
+                        {
+                          "name": "error-context",
+                          "contentType": "text/markdown",
+                          "path": "/Users/winzendwyers/Forsight/foresight-web/tests/reports/test-results/homepage-Homepage---UI-Com-519bb-s-for-empty-form-submission-chromium/error-context.md"
+                        }
+                      ],
+                      "errorLocation": {
+                        "file": "/Users/winzendwyers/Forsight/foresight-web/tests/e2e/homepage.spec.ts",
+                        "column": 24,
+                        "line": 82
+                      }
+                    }
+                  ],
+                  "status": "unexpected"
+                }
+              ],
+              "id": "84e7eb052e8cbae1c9f0-797d856ee00c7b27d3fd",
+              "file": "homepage.spec.ts",
+              "line": 79,
+              "column": 7
+            },
+            {
+              "title": "should handle loading states appropriately",
+              "ok": false,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 5,
+                      "parallelIndex": 5,
+                      "status": "failed",
+                      "duration": 31089,
+                      "error": {
+                        "message": "TimeoutError: locator.click: Timeout 30000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('button[type=\"submit\"], button:has-text(\"Start Forecast\")')\u001b[22m\n\u001b[2m    - locator resolved to <button disabled class=\"w-full py-4 bg-gradient-to-r from-brand-primary to-brand-secondary text-white rounded-lg font-medium hover:opacity-90 transition-opacity disabled:opacity-50\">Start Forecast</button>\u001b[22m\n\u001b[2m  - attempting click action\u001b[22m\n\u001b[2m    2 × waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m      - element is not stable\u001b[22m\n\u001b[2m    - retrying click action\u001b[22m\n\u001b[2m    - waiting 20ms\u001b[22m\n\u001b[2m    - waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m    - element is not stable\u001b[22m\n\u001b[2m  2 × retrying click action\u001b[22m\n\u001b[2m      - waiting 100ms\u001b[22m\n\u001b[2m      - waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m      - element is not enabled\u001b[22m\n\u001b[2m  57 × retrying click action\u001b[22m\n\u001b[2m       - waiting 500ms\u001b[22m\n\u001b[2m       - waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m       - element is not enabled\u001b[22m\n\u001b[2m  - retrying click action\u001b[22m\n\u001b[2m    - waiting 500ms\u001b[22m\n",
+                        "stack": "TimeoutError: locator.click: Timeout 30000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('button[type=\"submit\"], button:has-text(\"Start Forecast\")')\u001b[22m\n\u001b[2m    - locator resolved to <button disabled class=\"w-full py-4 bg-gradient-to-r from-brand-primary to-brand-secondary text-white rounded-lg font-medium hover:opacity-90 transition-opacity disabled:opacity-50\">Start Forecast</button>\u001b[22m\n\u001b[2m  - attempting click action\u001b[22m\n\u001b[2m    2 × waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m      - element is not stable\u001b[22m\n\u001b[2m    - retrying click action\u001b[22m\n\u001b[2m    - waiting 20ms\u001b[22m\n\u001b[2m    - waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m    - element is not stable\u001b[22m\n\u001b[2m  2 × retrying click action\u001b[22m\n\u001b[2m      - waiting 100ms\u001b[22m\n\u001b[2m      - waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m      - element is not enabled\u001b[22m\n\u001b[2m  57 × retrying click action\u001b[22m\n\u001b[2m       - waiting 500ms\u001b[22m\n\u001b[2m       - waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m       - element is not enabled\u001b[22m\n\u001b[2m  - retrying click action\u001b[22m\n\u001b[2m    - waiting 500ms\u001b[22m\n\n    at /Users/winzendwyers/Forsight/foresight-web/tests/e2e/homepage.spec.ts:114:24",
+                        "location": {
+                          "file": "/Users/winzendwyers/Forsight/foresight-web/tests/e2e/homepage.spec.ts",
+                          "column": 24,
+                          "line": 114
+                        },
+                        "snippet": "  112 |     // Submit form and check for loading indicators\n  113 |     const submitButton = page.locator('button[type=\"submit\"], button:has-text(\"Start Forecast\")')\n> 114 |     await submitButton.click()\n      |                        ^\n  115 |\n  116 |     // Check for loading states\n  117 |     const loadingIndicators = page.locator('.loading, .spinner, text=Processing, text=Loading, [data-testid=\"loading\"]')"
+                      },
+                      "errors": [
+                        {
+                          "location": {
+                            "file": "/Users/winzendwyers/Forsight/foresight-web/tests/e2e/homepage.spec.ts",
+                            "column": 24,
+                            "line": 114
+                          },
+                          "message": "TimeoutError: locator.click: Timeout 30000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('button[type=\"submit\"], button:has-text(\"Start Forecast\")')\u001b[22m\n\u001b[2m    - locator resolved to <button disabled class=\"w-full py-4 bg-gradient-to-r from-brand-primary to-brand-secondary text-white rounded-lg font-medium hover:opacity-90 transition-opacity disabled:opacity-50\">Start Forecast</button>\u001b[22m\n\u001b[2m  - attempting click action\u001b[22m\n\u001b[2m    2 × waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m      - element is not stable\u001b[22m\n\u001b[2m    - retrying click action\u001b[22m\n\u001b[2m    - waiting 20ms\u001b[22m\n\u001b[2m    - waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m    - element is not stable\u001b[22m\n\u001b[2m  2 × retrying click action\u001b[22m\n\u001b[2m      - waiting 100ms\u001b[22m\n\u001b[2m      - waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m      - element is not enabled\u001b[22m\n\u001b[2m  57 × retrying click action\u001b[22m\n\u001b[2m       - waiting 500ms\u001b[22m\n\u001b[2m       - waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m       - element is not enabled\u001b[22m\n\u001b[2m  - retrying click action\u001b[22m\n\u001b[2m    - waiting 500ms\u001b[22m\n\n\n  112 |     // Submit form and check for loading indicators\n  113 |     const submitButton = page.locator('button[type=\"submit\"], button:has-text(\"Start Forecast\")')\n> 114 |     await submitButton.click()\n      |                        ^\n  115 |\n  116 |     // Check for loading states\n  117 |     const loadingIndicators = page.locator('.loading, .spinner, text=Processing, text=Loading, [data-testid=\"loading\"]')\n    at /Users/winzendwyers/Forsight/foresight-web/tests/e2e/homepage.spec.ts:114:24"
+                        }
+                      ],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2025-09-22T21:47:01.934Z",
+                      "annotations": [],
+                      "attachments": [
+                        {
+                          "name": "screenshot",
+                          "contentType": "image/png",
+                          "path": "/Users/winzendwyers/Forsight/foresight-web/tests/reports/test-results/homepage-Homepage---UI-Com-0504b-oading-states-appropriately-chromium/test-failed-1.png"
+                        },
+                        {
+                          "name": "video",
+                          "contentType": "video/webm",
+                          "path": "/Users/winzendwyers/Forsight/foresight-web/tests/reports/test-results/homepage-Homepage---UI-Com-0504b-oading-states-appropriately-chromium/video.webm"
+                        },
+                        {
+                          "name": "error-context",
+                          "contentType": "text/markdown",
+                          "path": "/Users/winzendwyers/Forsight/foresight-web/tests/reports/test-results/homepage-Homepage---UI-Com-0504b-oading-states-appropriately-chromium/error-context.md"
+                        }
+                      ],
+                      "errorLocation": {
+                        "file": "/Users/winzendwyers/Forsight/foresight-web/tests/e2e/homepage.spec.ts",
+                        "column": 24,
+                        "line": 114
+                      }
+                    }
+                  ],
+                  "status": "unexpected"
+                }
+              ],
+              "id": "84e7eb052e8cbae1c9f0-fb164802bb6a9b737b65",
+              "file": "homepage.spec.ts",
+              "line": 101,
+              "column": 7
+            },
+            {
+              "title": "should display branding and footer information",
+              "ok": false,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "failed",
+                      "duration": 853,
+                      "error": {
+                        "message": "Error: expect.toBeVisible: Unexpected token \"=\" while parsing css selector \"h1, .logo, text=Foresight Analyzer\". Did you mean to CSS.escape it?\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" with timeout 10000ms\u001b[22m\n\u001b[2m  - waiting for h1, .logo, text=Foresight Analyzer\u001b[22m\n",
+                        "stack": "Error: expect.toBeVisible: Unexpected token \"=\" while parsing css selector \"h1, .logo, text=Foresight Analyzer\". Did you mean to CSS.escape it?\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" with timeout 10000ms\u001b[22m\n\u001b[2m  - waiting for h1, .logo, text=Foresight Analyzer\u001b[22m\n\n    at /Users/winzendwyers/Forsight/foresight-web/tests/e2e/homepage.spec.ts:128:70",
+                        "location": {
+                          "file": "/Users/winzendwyers/Forsight/foresight-web/tests/e2e/homepage.spec.ts",
+                          "column": 70,
+                          "line": 128
+                        },
+                        "snippet": "  126 |   test('should display branding and footer information', async ({ page }) => {\n  127 |     // Check for main branding elements\n> 128 |     await expect(page.locator('h1, .logo, text=Foresight Analyzer')).toBeVisible()\n      |                                                                      ^\n  129 |\n  130 |     // Scroll to bottom to check footer\n  131 |     await page.evaluate(() => window.scrollTo(0, document.body.scrollHeight))"
+                      },
+                      "errors": [
+                        {
+                          "location": {
+                            "file": "/Users/winzendwyers/Forsight/foresight-web/tests/e2e/homepage.spec.ts",
+                            "column": 70,
+                            "line": 128
+                          },
+                          "message": "Error: expect.toBeVisible: Unexpected token \"=\" while parsing css selector \"h1, .logo, text=Foresight Analyzer\". Did you mean to CSS.escape it?\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" with timeout 10000ms\u001b[22m\n\u001b[2m  - waiting for h1, .logo, text=Foresight Analyzer\u001b[22m\n\n\n  126 |   test('should display branding and footer information', async ({ page }) => {\n  127 |     // Check for main branding elements\n> 128 |     await expect(page.locator('h1, .logo, text=Foresight Analyzer')).toBeVisible()\n      |                                                                      ^\n  129 |\n  130 |     // Scroll to bottom to check footer\n  131 |     await page.evaluate(() => window.scrollTo(0, document.body.scrollHeight))\n    at /Users/winzendwyers/Forsight/foresight-web/tests/e2e/homepage.spec.ts:128:70"
+                        }
+                      ],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2025-09-22T21:47:02.601Z",
+                      "annotations": [],
+                      "attachments": [
+                        {
+                          "name": "screenshot",
+                          "contentType": "image/png",
+                          "path": "/Users/winzendwyers/Forsight/foresight-web/tests/reports/test-results/homepage-Homepage---UI-Com-1c5b4-ding-and-footer-information-chromium/test-failed-1.png"
+                        },
+                        {
+                          "name": "video",
+                          "contentType": "video/webm",
+                          "path": "/Users/winzendwyers/Forsight/foresight-web/tests/reports/test-results/homepage-Homepage---UI-Com-1c5b4-ding-and-footer-information-chromium/video.webm"
+                        },
+                        {
+                          "name": "error-context",
+                          "contentType": "text/markdown",
+                          "path": "/Users/winzendwyers/Forsight/foresight-web/tests/reports/test-results/homepage-Homepage---UI-Com-1c5b4-ding-and-footer-information-chromium/error-context.md"
+                        }
+                      ],
+                      "errorLocation": {
+                        "file": "/Users/winzendwyers/Forsight/foresight-web/tests/e2e/homepage.spec.ts",
+                        "column": 70,
+                        "line": 128
+                      }
+                    }
+                  ],
+                  "status": "unexpected"
+                }
+              ],
+              "id": "84e7eb052e8cbae1c9f0-beb5795da70bb697dc52",
+              "file": "homepage.spec.ts",
+              "line": 126,
+              "column": 7
+            },
+            {
+              "title": "should handle accessibility features",
+              "ok": false,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 3,
+                      "parallelIndex": 3,
+                      "status": "failed",
+                      "duration": 480,
+                      "error": {
+                        "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBeTruthy\u001b[2m()\u001b[22m\n\nReceived: \u001b[31mfalse\u001b[39m",
+                        "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBeTruthy\u001b[2m()\u001b[22m\n\nReceived: \u001b[31mfalse\u001b[39m\n    at /Users/winzendwyers/Forsight/foresight-web/tests/e2e/homepage.spec.ts:161:26",
+                        "location": {
+                          "file": "/Users/winzendwyers/Forsight/foresight-web/tests/e2e/homepage.spec.ts",
+                          "column": 26,
+                          "line": 161
+                        },
+                        "snippet": "  159 |       const isVisible = await input.isVisible()\n  160 |       if (isVisible) {\n> 161 |         expect(hasLabel).toBeTruthy()\n      |                          ^\n  162 |       }\n  163 |     }\n  164 |"
+                      },
+                      "errors": [
+                        {
+                          "location": {
+                            "file": "/Users/winzendwyers/Forsight/foresight-web/tests/e2e/homepage.spec.ts",
+                            "column": 26,
+                            "line": 161
+                          },
+                          "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBeTruthy\u001b[2m()\u001b[22m\n\nReceived: \u001b[31mfalse\u001b[39m\n\n  159 |       const isVisible = await input.isVisible()\n  160 |       if (isVisible) {\n> 161 |         expect(hasLabel).toBeTruthy()\n      |                          ^\n  162 |       }\n  163 |     }\n  164 |\n    at /Users/winzendwyers/Forsight/foresight-web/tests/e2e/homepage.spec.ts:161:26"
+                        }
+                      ],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2025-09-22T21:47:02.603Z",
+                      "annotations": [],
+                      "attachments": [
+                        {
+                          "name": "screenshot",
+                          "contentType": "image/png",
+                          "path": "/Users/winzendwyers/Forsight/foresight-web/tests/reports/test-results/homepage-Homepage---UI-Com-2edac-ndle-accessibility-features-chromium/test-failed-1.png"
+                        },
+                        {
+                          "name": "video",
+                          "contentType": "video/webm",
+                          "path": "/Users/winzendwyers/Forsight/foresight-web/tests/reports/test-results/homepage-Homepage---UI-Com-2edac-ndle-accessibility-features-chromium/video.webm"
+                        },
+                        {
+                          "name": "error-context",
+                          "contentType": "text/markdown",
+                          "path": "/Users/winzendwyers/Forsight/foresight-web/tests/reports/test-results/homepage-Homepage---UI-Com-2edac-ndle-accessibility-features-chromium/error-context.md"
+                        }
+                      ],
+                      "errorLocation": {
+                        "file": "/Users/winzendwyers/Forsight/foresight-web/tests/e2e/homepage.spec.ts",
+                        "column": 26,
+                        "line": 161
+                      }
+                    }
+                  ],
+                  "status": "unexpected"
+                }
+              ],
+              "id": "84e7eb052e8cbae1c9f0-5e878a1f722d11160225",
+              "file": "homepage.spec.ts",
+              "line": 143,
+              "column": 7
+            },
+            {
+              "title": "should maintain consistent styling and layout",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 6,
+                      "parallelIndex": 3,
+                      "status": "passed",
+                      "duration": 3667,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2025-09-22T21:47:03.403Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "84e7eb052e8cbae1c9f0-acb74164b08c97d8d9a2",
+              "file": "homepage.spec.ts",
+              "line": 181,
+              "column": 7
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "stats": {
+    "startTime": "2025-09-22T21:46:59.731Z",
+    "duration": 33879.327,
+    "expected": 3,
+    "skipped": 0,
+    "unexpected": 6,
+    "flaky": 0
+  }
+}

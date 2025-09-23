@@ -1,0 +1,32 @@
+# Core dependencies
+openai>=1.40.0          # For OpenRouter API integration
+python-dotenv>=1.0.0    # Environment variable management
+pydantic>=2.0.0        # Data validation and models
+
+# Data processing
+pandas>=2.0.0          # Data manipulation and analysis
+numpy>=1.24.0          # Numerical operations
+scipy>=1.10.0          # Statistical functions
+
+# Excel export
+openpyxl>=3.1.0        # Excel file creation and manipulation
+xlsxwriter>=3.1.0      # Alternative Excel writer with charts
+
+# Async operations
+aiohttp>=3.8.0         # Async HTTP client
+asyncio-throttle>=1.0.0  # Rate limiting for API calls
+
+# Utilities
+rich>=13.0.0           # Beautiful terminal output and progress bars
+python-dateutil>=2.8.0 # Date handling utilities
+jsonschema>=4.17.0     # JSON validation
+
+# Analysis
+textstat>=0.7.0        # Text analysis and readability
+
+# Enhanced Visualizations
+matplotlib>=3.6.0      # Plotting and visualization
+seaborn>=0.12.0       # Statistical visualization
+plotly>=5.17.0        # Interactive plots
+pillow>=10.0.0        # Image processing
+wordcloud>=1.9.2      # Word cloud generation

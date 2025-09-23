@@ -1,0 +1,193 @@
+config:
+  target: 'https://foresight-analyzer.netlify.app'
+  phases:
+    # Warm-up phase
+    - duration: 60
+      arrivalRate: 1
+      name: "Warm-up"
+
+    # Light load phase
+    - duration: 120
+      arrivalRate: 5
+      name: "Light load"
+
+    # Medium load phase
+    - duration: 180
+      arrivalRate: 10
+      name: "Medium load"
+
+    # Peak load phase
+    - duration: 120
+      arrivalRate: 20
+      name: "Peak load"
+
+    # Stress test phase
+    - duration: 60
+      arrivalRate: 30
+      name: "Stress test"
+
+    # Cool-down phase
+    - duration: 60
+      arrivalRate: 2
+      name: "Cool-down"
+
+  # Performance thresholds
+  ensure:
+    # 95% of requests should complete within 5 seconds
+    - p95: 5000
+
+    # 99% of requests should complete within 10 seconds
+    - p99: 10000
+
+    # Error rate should be less than 5%
+    - maxErrorRate: 5
+
+  # HTTP configuration
+  http:
+    timeout: 30
+    pool: 10
+
+  # Data sources for test variations
+  payload:
+    path: "./test-data.csv"
+
+  # Plugins for enhanced reporting
+  plugins:
+    expect: {}
+    metrics-by-endpoint: {}
+
+scenarios:
+  # Test homepage loading
+  - name: "Homepage Load Test"
+    weight: 30
+    flow:
+      - get:
+          url: "/"
+          capture:
+            - json: "$"
+              as: "homepage_data"
+          expect:
+            - statusCode: 200
+            - contentType: "text/html"
+            - hasHeader: "cache-control"
+
+  # Test static asset loading
+  - name: "Static Assets Test"
+    weight: 20
+    flow:
+      - get:
+          url: "/_next/static/css/app.css"
+          expect:
+            - statusCode: [200, 404] # 404 is acceptable for dynamic assets
+      - get:
+          url: "/_next/static/js/app.js"
+          expect:
+            - statusCode: [200, 404]
+
+  # Test API forecast creation
+  - name: "Forecast Creation Load Test"
+    weight: 25
+    flow:
+      - post:
+          url: "/api/forecast"
+          json:
+            question: "Will there be peace in Ukraine by {{ $randomInt(2025, 2030) }}?"
+            definition: "A formal peace treaty signed by both governments"
+            timeframe: "{{ $randomInt(2025, 2030) }}"
+            models: ["x-ai/grok-4-fast:free", "deepseek/deepseek-r1:free"]
+            iterations_per_model: "{{ $randomInt(1, 3) }}"
+          capture:
+            - json: "$.forecast_id"
+              as: "forecast_id"
+          expect:
+            - statusCode: [200, 400, 429] # Include rate limiting
+            - hasProperty: "forecast_id"
+
+      # Check status if forecast was created
+      - get:
+          url: "/api/forecast/{{ forecast_id }}"
+          ifTrue: "forecast_id"
+          expect:
+            - statusCode: [200, 404]
+
+  # Test concurrent API requests
+  - name: "Concurrent API Stress Test"
+    weight: 15
+    flow:
+      - parallel:
+          - post:
+              url: "/api/forecast"
+              json:
+                question: "Will AI achieve AGI by 2030?"
+                definition: "Artificial General Intelligence matching human performance"
+                timeframe: "2030"
+                models: ["x-ai/grok-4-fast:free"]
+                iterations_per_model: 1
+          - post:
+              url: "/api/forecast"
+              json:
+                question: "Will quantum computing break RSA by 2035?"
+                definition: "Breaking 2048-bit RSA encryption"
+                timeframe: "2035"
+                models: ["deepseek/deepseek-r1:free"]
+                iterations_per_model: 1
+          - post:
+              url: "/api/forecast"
+              json:
+                question: "Will renewable energy exceed 80% by 2035?"
+                definition: "Renewable sources providing 80%+ of electricity"
+                timeframe: "2035"
+                models: ["x-ai/grok-4-fast:free", "deepseek/deepseek-r1:free"]
+                iterations_per_model: 1
+
+  # Test error conditions
+  - name: "Error Handling Test"
+    weight: 10
+    flow:
+      # Test invalid forecast data
+      - post:
+          url: "/api/forecast"
+          json:
+            question: ""
+            definition: ""
+            timeframe: ""
+            models: []
+            iterations_per_model: 0
+          expect:
+            - statusCode: 400
+
+      # Test non-existent forecast
+      - get:
+          url: "/api/forecast/non-existent-{{ $randomString() }}"
+          expect:
+            - statusCode: 404
+
+      # Test malformed JSON
+      - post:
+          url: "/api/forecast"
+          body: "invalid json data"
+          headers:
+            Content-Type: "application/json"
+          expect:
+            - statusCode: 400
+
+# Custom functions for test data
+functions:
+  # Generate random geopolitical questions
+  generateQuestion:
+    - "Will there be a military conflict between {{ $pick(['China', 'Russia', 'Iran', 'North Korea']) }} and {{ $pick(['USA', 'NATO', 'Taiwan', 'Ukraine']) }} by {{ $randomInt(2025, 2030) }}?"
+    - "Will {{ $pick(['Bitcoin', 'Ethereum', 'AI stocks', 'Tech stocks']) }} reach ${{ $randomInt(50000, 200000) }} by {{ $randomInt(2025, 2028) }}?"
+    - "Will {{ $pick(['Climate change', 'Renewable energy', 'Nuclear fusion', 'Space exploration']) }} achieve breakthrough by {{ $randomInt(2025, 2035) }}?"
+
+  # Generate random definitions
+  generateDefinition:
+    - "A formal {{ $pick(['agreement', 'treaty', 'announcement', 'breakthrough']) }} acknowledged by {{ $pick(['international media', 'major governments', 'scientific community', 'financial institutions']) }}"
+
+# Before/after hooks
+before:
+  flow:
+    - log: "Starting Foresight Analyzer load test"
+
+after:
+  flow:
+    - log: "Load test completed"

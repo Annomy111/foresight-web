@@ -1,0 +1,29 @@
+services:
+  # Web Service for FastAPI Backend
+  - type: web
+    name: foresight-analyzer-api
+    runtime: python
+    region: oregon # oregon, frankfurt, ohio, singapore
+    plan: free # Free tier!
+    buildCommand: "pip install -r requirements.txt"
+    startCommand: "uvicorn main:app --host 0.0.0.0 --port $PORT"
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.11.0
+      - key: OPENROUTER_API_KEY
+        sync: false # Will be added via Render dashboard for security
+      - key: OPENROUTER_BASE_URL
+        value: https://openrouter.ai/api/v1
+      - key: ENABLED_MODELS
+        value: x-ai/grok-4-fast:free,deepseek/deepseek-r1:free,qwen/qwen3-8b:free,google/gemma-2-9b-it:free,meta-llama/llama-3.2-3b-instruct:free,qwen/qwen-2.5-72b-instruct:free,qwen/qwen-2.5-coder-32b-instruct:free,meta-llama/llama-4-maverick:free
+      - key: ITERATIONS_PER_MODEL
+        value: "3"
+      - key: CONCURRENT_REQUESTS
+        value: "1"
+      - key: REQUEST_TIMEOUT
+        value: "120"
+      - key: RATE_LIMIT_DELAY
+        value: "5"
+    # Health check endpoint to keep service alive
+    healthCheckPath: /health
+    autoDeploy: true # Auto deploy on git push

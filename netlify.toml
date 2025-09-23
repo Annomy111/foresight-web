@@ -1,0 +1,41 @@
+# Netlify configuration for Foresight Analyzer
+
+[build]
+  # Next.js build command
+  command = "npm run build"
+  publish = ".next"
+
+[build.environment]
+  # Node version for build
+  NODE_VERSION = "20"
+  # Backend API URL
+  NEXT_PUBLIC_API_URL = "https://foresight-backend-api.onrender.com"
+
+# API Functions configuration
+[functions]
+  directory = "netlify/functions"
+  node_bundler = "esbuild"
+
+# Redirects for API routes
+[[redirects]]
+  from = "/api/*"
+  to = "/.netlify/functions/api/:splat"
+  status = 200
+
+# Headers for CORS
+[[headers]]
+  for = "/api/*"
+  [headers.values]
+    Access-Control-Allow-Origin = "*"
+    Access-Control-Allow-Headers = "Content-Type, Authorization"
+    Access-Control-Allow-Methods = "GET, POST, PUT, DELETE, OPTIONS"
+
+# Environment variables (to be set in Netlify dashboard)
+[context.production.environment]
+  NODE_ENV = "production"
+
+[context.deploy-preview.environment]
+  NODE_ENV = "development"
+
+[context.branch-deploy.environment]
+  NODE_ENV = "development"

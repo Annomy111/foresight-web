@@ -1,0 +1,45 @@
+{
+  "summary": {
+    "total": 0,
+    "passed": 0,
+    "failed": 4,
+    "skipped": 0,
+    "duration": 4111,
+    "success": false
+  },
+  "suites": {
+    "jest": {
+      "name": "Jest Unit Tests",
+      "status": "failed",
+      "error": "Jest tests failed",
+      "tests": 0,
+      "passed": 0,
+      "failed": 1
+    },
+    "playwright": {
+      "name": "Playwright E2E Tests",
+      "status": "failed",
+      "error": "Playwright tests failed",
+      "tests": 0,
+      "passed": 0,
+      "failed": 1
+    },
+    "accessibility": {
+      "name": "Accessibility Tests",
+      "status": "failed",
+      "error": "Accessibility tests failed",
+      "tests": 0,
+      "passed": 0,
+      "failed": 1
+    },
+    "performance": {
+      "name": "Performance Tests",
+      "status": "failed",
+      "error": "Performance tests failed",
+      "tests": 0,
+      "passed": 0,
+      "failed": 1
+    }
+  },
+  "reports": []
+}

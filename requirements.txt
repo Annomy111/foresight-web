@@ -1,0 +1,34 @@
+# FastAPI backend requirements
+fastapi==0.110.0
+uvicorn[standard]==0.27.0
+pydantic==2.5.3
+python-multipart==0.0.6
+python-dotenv==1.0.0
+
+# Database
+asyncpg==0.29.0
+sqlalchemy==2.0.25
+
+# OpenRouter API
+httpx==0.26.0
+aiohttp==3.9.1
+
+# Data processing
+numpy==1.24.3
+pandas==2.1.4
+scipy==1.11.4
+
+# Excel export
+openpyxl==3.1.2
+xlsxwriter==3.1.9
+
+# WebSocket
+websockets==12.0
+python-socketio==5.10.0
+
+# AWS Lambda/Netlify Functions
+mangum==0.17.0
+
+# Utils
+python-dateutil==2.8.2
+pytz==2023.3
