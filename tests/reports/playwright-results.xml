@@ -1,33 +1,31 @@
-<testsuites id="" name="" tests="9" failures="6" skipped="0" errors="0" time="33.879326999999996">
-<testsuite name="homepage.spec.ts" timestamp="2025-09-22T21:47:01.669Z" hostname="chromium" tests="9" failures="6" skipped="0" time="91.324" errors="0">
-<testcase name="Homepage - UI Components and Navigation › should load homepage with correct title and meta information" classname="homepage.spec.ts" time="0.545">
+<testsuites id="" name="" tests="9" failures="6" skipped="0" errors="0" time="34.756269">
+<testsuite name="homepage.spec.ts" timestamp="2025-09-23T22:34:57.001Z" hostname="chromium" tests="9" failures="6" skipped="0" time="100.81" errors="0">
+<testcase name="Homepage - UI Components and Navigation › should load homepage with correct title and meta information" classname="homepage.spec.ts" time="2.837">
 </testcase>
-<testcase name="Homepage - UI Components and Navigation › should display forecast form with all required fields" classname="homepage.spec.ts" time="11.368">
+<testcase name="Homepage - UI Components and Navigation › should display forecast form with all required fields" classname="homepage.spec.ts" time="11.867">
 <failure message="homepage.spec.ts:19:7 should display forecast form with all required fields" type="FAILURE">
 <![CDATA[  [chromium] › homepage.spec.ts:19:7 › Homepage - UI Components and Navigation › should display forecast form with all required fields 
 
-    Error: expect(locator).toBeEnabled() failed
+    Error: expect(locator).toBeVisible() failed
 
     Locator:  locator('button:has-text("Start Forecast")')
-    Expected: enabled
-    Received: disabled
+    Expected: visible
+    Received: <element(s) not found>
     Timeout:  10000ms
 
     Call log:
-      - Expect "toBeEnabled" with timeout 10000ms
+      - Expect "toBeVisible" with timeout 10000ms
       - waiting for locator('button:has-text("Start Forecast")')
-        14 × locator resolved to <button disabled class="w-full py-4 bg-gradient-to-r from-brand-primary to-brand-secondary text-white rounded-lg font-medium hover:opacity-90 transition-opacity disabled:opacity-50">Start Forecast</button>
-           - unexpected value "disabled"
 
 
+      37 |     // Check submit button
       38 |     const submitButton = page.locator('button:has-text("Start Forecast")')
-      39 |     await expect(submitButton).toBeVisible()
-    > 40 |     await expect(submitButton).toBeEnabled()
+    > 39 |     await expect(submitButton).toBeVisible()
          |                                ^
+      40 |     await expect(submitButton).toBeEnabled()
       41 |   })
       42 |
-      43 |   test('should display model selection interface', async ({ page }) => {
-        at /Users/winzendwyers/Forsight/foresight-web/tests/e2e/homepage.spec.ts:40:32
+        at /Users/winzendwyers/Forsight/foresight-web/tests/e2e/homepage.spec.ts:39:32
 
     attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
     ../reports/test-results/homepage-Homepage---UI-Com-c969b-rm-with-all-required-fields-chromium/test-failed-1.png
@@ -50,30 +48,30 @@
 ]]>
 </system-out>
 </testcase>
-<testcase name="Homepage - UI Components and Navigation › should display model selection interface" classname="homepage.spec.ts" time="11.233">
+<testcase name="Homepage - UI Components and Navigation › should display model selection interface" classname="homepage.spec.ts" time="12.517">
 <failure message="homepage.spec.ts:43:7 should display model selection interface" type="FAILURE">
 <![CDATA[  [chromium] › homepage.spec.ts:43:7 › Homepage - UI Components and Navigation › should display model selection interface 
 
     Error: expect(locator).toBeVisible() failed
 
-    Locator:  locator('input[type="number"]')
+    Locator:  locator('text=Select AI Models')
     Expected: visible
     Received: <element(s) not found>
     Timeout:  10000ms
 
     Call log:
       - Expect "toBeVisible" with timeout 10000ms
-      - waiting for locator('input[type="number"]')
+      - waiting for locator('text=Select AI Models')
 
 
-      56 |     // Check for iterations number input
-      57 |     const iterationsInput = page.locator('input[type="number"]')
-    > 58 |     await expect(iterationsInput).toBeVisible()
-         |                                   ^
-      59 |   })
-      60 |
-      61 |   test('should show responsive design on different screen sizes', async ({ page }) => {
-        at /Users/winzendwyers/Forsight/foresight-web/tests/e2e/homepage.spec.ts:58:35
+      44 |     // Check for "Select AI Models" text
+      45 |     const modelLabel = page.locator('text=Select AI Models')
+    > 46 |     await expect(modelLabel).toBeVisible()
+         |                              ^
+      47 |
+      48 |     // Check for "Iterations per Model" text
+      49 |     const iterationsLabel = page.locator('text=Iterations per Model')
+        at /Users/winzendwyers/Forsight/foresight-web/tests/e2e/homepage.spec.ts:46:30
 
     attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
     ../reports/test-results/homepage-Homepage---UI-Com-ebf2a-y-model-selection-interface-chromium/test-failed-1.png
@@ -96,29 +94,15 @@
 ]]>
 </system-out>
 </testcase>
-<testcase name="Homepage - UI Components and Navigation › should show responsive design on different screen sizes" classname="homepage.spec.ts" time="0.548">
+<testcase name="Homepage - UI Components and Navigation › should show responsive design on different screen sizes" classname="homepage.spec.ts" time="3.193">
 </testcase>
-<testcase name="Homepage - UI Components and Navigation › should display error states for empty form submission" classname="homepage.spec.ts" time="31.541">
+<testcase name="Homepage - UI Components and Navigation › should display error states for empty form submission" classname="homepage.spec.ts" time="32.529">
 <failure message="homepage.spec.ts:79:7 should display error states for empty form submission" type="FAILURE">
 <![CDATA[  [chromium] › homepage.spec.ts:79:7 › Homepage - UI Components and Navigation › should display error states for empty form submission 
 
     TimeoutError: locator.click: Timeout 30000ms exceeded.
     Call log:
       - waiting for locator('button[type="submit"], button:has-text("Start Forecast")')
-        - locator resolved to <button disabled class="w-full py-4 bg-gradient-to-r from-brand-primary to-brand-secondary text-white rounded-lg font-medium hover:opacity-90 transition-opacity disabled:opacity-50">Start Forecast</button>
-      - attempting click action
-        2 × waiting for element to be visible, enabled and stable
-          - element is not stable
-        - retrying click action
-        - waiting 20ms
-        2 × waiting for element to be visible, enabled and stable
-          - element is not stable
-        - retrying click action
-          - waiting 100ms
-        58 × waiting for element to be visible, enabled and stable
-           - element is not enabled
-         - retrying click action
-           - waiting 500ms
 
 
       80 |     // Try to submit empty form
@@ -151,31 +135,13 @@
 ]]>
 </system-out>
 </testcase>
-<testcase name="Homepage - UI Components and Navigation › should handle loading states appropriately" classname="homepage.spec.ts" time="31.089">
+<testcase name="Homepage - UI Components and Navigation › should handle loading states appropriately" classname="homepage.spec.ts" time="32.395">
 <failure message="homepage.spec.ts:101:7 should handle loading states appropriately" type="FAILURE">
 <![CDATA[  [chromium] › homepage.spec.ts:101:7 › Homepage - UI Components and Navigation › should handle loading states appropriately 
 
     TimeoutError: locator.click: Timeout 30000ms exceeded.
     Call log:
       - waiting for locator('button[type="submit"], button:has-text("Start Forecast")')
-        - locator resolved to <button disabled class="w-full py-4 bg-gradient-to-r from-brand-primary to-brand-secondary text-white rounded-lg font-medium hover:opacity-90 transition-opacity disabled:opacity-50">Start Forecast</button>
-      - attempting click action
-        2 × waiting for element to be visible, enabled and stable
-          - element is not stable
-        - retrying click action
-        - waiting 20ms
-        - waiting for element to be visible, enabled and stable
-        - element is not stable
-      2 × retrying click action
-          - waiting 100ms
-          - waiting for element to be visible, enabled and stable
-          - element is not enabled
-      57 × retrying click action
-           - waiting 500ms
-           - waiting for element to be visible, enabled and stable
-           - element is not enabled
-      - retrying click action
-        - waiting 500ms
 
 
       112 |     // Submit form and check for loading indicators
@@ -208,7 +174,7 @@
 ]]>
 </system-out>
 </testcase>
-<testcase name="Homepage - UI Components and Navigation › should display branding and footer information" classname="homepage.spec.ts" time="0.853">
+<testcase name="Homepage - UI Components and Navigation › should display branding and footer information" classname="homepage.spec.ts" time="1.533">
 <failure message="homepage.spec.ts:126:7 should display branding and footer information" type="FAILURE">
 <![CDATA[  [chromium] › homepage.spec.ts:126:7 › Homepage - UI Components and Navigation › should display branding and footer information 
 
@@ -248,7 +214,7 @@
 ]]>
 </system-out>
 </testcase>
-<testcase name="Homepage - UI Components and Navigation › should handle accessibility features" classname="homepage.spec.ts" time="0.48">
+<testcase name="Homepage - UI Components and Navigation › should handle accessibility features" classname="homepage.spec.ts" time="0.892">
 <failure message="homepage.spec.ts:143:7 should handle accessibility features" type="FAILURE">
 <![CDATA[  [chromium] › homepage.spec.ts:143:7 › Homepage - UI Components and Navigation › should handle accessibility features 
 
@@ -286,7 +252,7 @@
 ]]>
 </system-out>
 </testcase>
-<testcase name="Homepage - UI Components and Navigation › should maintain consistent styling and layout" classname="homepage.spec.ts" time="3.667">
+<testcase name="Homepage - UI Components and Navigation › should maintain consistent styling and layout" classname="homepage.spec.ts" time="3.047">
 </testcase>
 </testsuite>
 </testsuites>
