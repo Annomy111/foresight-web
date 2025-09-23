@@ -1,2 +1,12 @@
-# Local Netlify folder
-.netlify
+node_modules/
+.next/
+.env.local
+.DS_Store
+*.log
+dist/
+build/
+.netlify/
+*.pyc
+__pycache__/
+backend/__pycache__/
+backend/*.pyc
