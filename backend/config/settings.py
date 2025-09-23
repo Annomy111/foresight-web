@@ -26,9 +26,12 @@ class ModelConfig(BaseModel):
     """Model configuration settings"""
     enabled_models: List[str] = Field(
         default=[
-            "x-ai/grok-4-fast:free",
+            "deepseek/deepseek-chat-v3-0324:free",
             "deepseek/deepseek-r1:free",
-            "qwen/qwen3-8b:free"
+            "deepseek/deepseek-r1-distill-llama-70b:free",
+            "meta-llama/llama-4-maverick:free",
+            "meta-llama/llama-4-scout:free",
+            "cognitivecomputations/dolphin3.0-mistral-24b:free"
         ],
         description="List of models to use"
     )
