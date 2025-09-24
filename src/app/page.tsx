@@ -151,12 +151,47 @@ export default function Home() {
               <div className="space-y-6">
                 <div className="flex justify-between items-center">
                   <h2 className="text-lg font-medium text-black">Forecast Result</h2>
-                  <button
-                    onClick={() => setResult(null)}
-                    className="text-sm text-gray-500 hover:text-black"
-                  >
-                    New Forecast
-                  </button>
+                  <div className="flex gap-3">
+                    <button
+                      onClick={async () => {
+                        try {
+                          // Call the backend Excel export endpoint
+                          const response = await fetch(`https://foresight-backend-api.onrender.com/api/forecast/${result.result.forecast_id || 'current'}/excel`);
+
+                          if (response.ok) {
+                            // Create blob from response
+                            const blob = await response.blob();
+
+                            // Create download link
+                            const url = window.URL.createObjectURL(blob);
+                            const a = document.createElement('a');
+                            a.href = url;
+                            a.download = `foresight_analysis_${new Date().toISOString().split('T')[0]}.xlsx`;
+                            document.body.appendChild(a);
+                            a.click();
+                            document.body.removeChild(a);
+                            window.URL.revokeObjectURL(url);
+
+                            toast.success('Excel report downloaded!');
+                          } else {
+                            toast.error('Failed to generate Excel report');
+                          }
+                        } catch (error) {
+                          console.error('Download error:', error);
+                          toast.error('Error downloading Excel report');
+                        }
+                      }}
+                      className="px-3 py-1 text-sm bg-green-600 text-white rounded hover:bg-green-700 transition-colors"
+                    >
+                      Download Excel
+                    </button>
+                    <button
+                      onClick={() => setResult(null)}
+                      className="text-sm text-gray-500 hover:text-black"
+                    >
+                      New Forecast
+                    </button>
+                  </div>
                 </div>
 
                 {result.success && result.result && (
