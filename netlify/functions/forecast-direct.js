@@ -3,7 +3,7 @@
  * No backend needed - runs entirely on Netlify Functions!
  */
 
-const API_KEY = process.env.OPENROUTER_API_KEY || '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';
+const API_KEY = process.env.OPENROUTER_API_KEY || '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';
 
 // Models that work with the new API key
 const MODELS = [
