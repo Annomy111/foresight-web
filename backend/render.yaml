@@ -11,13 +11,13 @@ services:
       - key: PYTHON_VERSION
         value: 3.11.0
       - key: OPENROUTER_API_KEY
-        sync: false # Will be added via Render dashboard for security
+        value: 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
       - key: OPENROUTER_BASE_URL
         value: https://openrouter.ai/api/v1
       - key: ENABLED_MODELS
-        value: x-ai/grok-4-fast:free,deepseek/deepseek-r1:free,qwen/qwen3-8b:free,google/gemma-2-9b-it:free,meta-llama/llama-3.2-3b-instruct:free,qwen/qwen-2.5-72b-instruct:free,qwen/qwen-2.5-coder-32b-instruct:free,meta-llama/llama-4-maverick:free
+        value: x-ai/grok-4-fast:free,google/gemma-2b-it:free,mistralai/mistral-7b-instruct:free,nousresearch/hermes-3-llama-3.1-8b:free,qwen/qwen-2.5-72b-instruct:free,meta-llama/llama-3.2-3b-instruct:free,google/gemma-2-9b-it:free
       - key: ITERATIONS_PER_MODEL
-        value: "3"
+        value: "5"
       - key: CONCURRENT_REQUESTS
         value: "1"
       - key: REQUEST_TIMEOUT
