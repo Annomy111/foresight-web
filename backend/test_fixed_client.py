@@ -10,7 +10,7 @@ from pathlib import Path
 sys.path.insert(0, str(Path(__file__).parent))
 
 # Set the API key
-os.environ['OPENROUTER_API_KEY'] = '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'
+os.environ['OPENROUTER_API_KEY'] = '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'
 os.environ['OPENROUTER_BASE_URL'] = 'https://openrouter.ai/api/v1'
 
 async def test_fixed_client():
