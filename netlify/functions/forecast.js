@@ -4,6 +4,8 @@ const https = require('https');
 // Backend URL - update this when deployed to Railway/Render
 const BACKEND_URL = process.env.BACKEND_URL || 'https://foresight-backend-api.onrender.com';
 
+console.log('🔧 Forecast function initialized with backend:', BACKEND_URL);
+
 exports.handler = async (event, context) => {
   // CORS headers
   const headers = {
@@ -79,25 +81,39 @@ exports.handler = async (event, context) => {
 
     // Proxy request to FastAPI backend
     console.log('🔄 Proxying forecast request to:', `${BACKEND_URL}/forecast`);
+    console.log('📝 Request data:', { question, definition, timeframe, iterations });
 
+    const requestBody = JSON.stringify({
+      question,
+      definition: definition || '',
+      timeframe: timeframe || '2026',
+      iterations: iterations || 3
+    });
+
+    console.log('📤 Sending request to backend...');
     const response = await fetch(`${BACKEND_URL}/forecast`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify({
-        question,
-        definition: definition || '',
-        timeframe: timeframe || '2026',
-        iterations: iterations || 3
-      })
+      body: requestBody
     });
 
+    console.log('📥 Backend response status:', response.status);
+
     if (!response.ok) {
-      throw new Error(`Backend responded with status: ${response.status}`);
+      const errorText = await response.text();
+      console.error('❌ Backend error response:', errorText);
+      throw new Error(`Backend responded with status: ${response.status} - ${errorText}`);
     }
 
     const data = await response.json();
+    console.log('✅ Backend response received:', JSON.stringify(data).substring(0, 200));
+
+    // Ensure we're returning the response in the expected format
+    if (data.success === false && data.error) {
+      console.error('⚠️ Backend returned error:', data.error);
+    }
 
     return {
       statusCode: 200,
@@ -106,35 +122,53 @@ exports.handler = async (event, context) => {
     };
 
   } catch (error) {
-    console.error('❌ Forecast proxy error:', error);
+    console.error('❌ Forecast proxy error:', error.message);
+    console.error('Stack:', error.stack);
 
-    // Fallback to mock if backend is unavailable
-    console.log('⚠️ Backend unavailable, using mock forecast');
+    // Check if we should use fallback
+    const useFallback = process.env.USE_FALLBACK !== 'false';
 
-    const fallbackResult = {
-      ensemble_probability: 38.4,
-      statistics: {
-        successful_queries: 3,
-        models_used: ['x-ai/grok-4-fast:free', 'deepseek/deepseek-r1:free', 'qwen/qwen3-8b:free'],
-        model_stats: {
-          'x-ai/grok-4-fast:free': { mean: 35.2 },
-          'deepseek/deepseek-r1:free': { mean: 41.1 },
-          'qwen/qwen3-8b:free': { mean: 38.9 }
-        }
-      },
-      question: JSON.parse(event.body).question,
-      timeframe: JSON.parse(event.body).timeframe || '2026',
-      generated_at: new Date().toISOString(),
-      note: 'Generated using fallback mode - backend unavailable'
-    };
+    if (useFallback) {
+      // Fallback to mock if backend is unavailable
+      console.log('⚠️ Backend unavailable, using mock forecast');
 
-    return {
-      statusCode: 200,
-      headers,
-      body: JSON.stringify({
-        success: true,
-        result: fallbackResult
-      })
-    };
+      const fallbackResult = {
+        ensemble_probability: 38.4,
+        statistics: {
+          successful_queries: 3,
+          models_used: ['x-ai/grok-4-fast:free', 'deepseek/deepseek-r1:free', 'qwen/qwen3-8b:free'],
+          model_stats: {
+            'x-ai/grok-4-fast:free': { mean: 35.2 },
+            'deepseek/deepseek-r1:free': { mean: 41.1 },
+            'qwen/qwen3-8b:free': { mean: 38.9 }
+          }
+        },
+        question: JSON.parse(event.body).question,
+        timeframe: JSON.parse(event.body).timeframe || '2026',
+        generated_at: new Date().toISOString(),
+        note: 'Generated using fallback mode - backend unavailable'
+      };
+
+      return {
+        statusCode: 200,
+        headers,
+        body: JSON.stringify({
+          success: true,
+          result: fallbackResult,
+          warning: 'Using fallback data - backend unavailable'
+        })
+      };
+    } else {
+      // Return actual error if fallback is disabled
+      return {
+        statusCode: 500,
+        headers,
+        body: JSON.stringify({
+          success: false,
+          error: error.message,
+          details: 'Backend service unavailable. Please try again later.'
+        })
+      };
+    }
   }
 };

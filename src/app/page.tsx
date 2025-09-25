@@ -155,8 +155,19 @@ export default function Home() {
                     <button
                       onClick={async () => {
                         try {
-                          // Call the backend Excel export endpoint
-                          const response = await fetch(`https://foresight-backend-api.onrender.com/api/forecast/${result.result.forecast_id || 'current'}/excel`);
+                          toast.loading('Generating Excel report...');
+
+                          // Call the Netlify function for Excel export
+                          const response = await fetch('/.netlify/functions/excel-export', {
+                            method: 'POST',
+                            headers: {
+                              'Content-Type': 'application/json',
+                            },
+                            body: JSON.stringify({
+                              forecast_id: result.result.forecast_id || null,
+                              forecast_data: result.result // Send the forecast data directly
+                            })
+                          });
 
                           if (response.ok) {
                             // Create blob from response
@@ -172,12 +183,16 @@ export default function Home() {
                             document.body.removeChild(a);
                             window.URL.revokeObjectURL(url);
 
+                            toast.dismiss();
                             toast.success('Excel report downloaded!');
                           } else {
-                            toast.error('Failed to generate Excel report');
+                            const error = await response.json();
+                            toast.dismiss();
+                            toast.error(error.error || 'Failed to generate Excel report');
                           }
                         } catch (error) {
                           console.error('Download error:', error);
+                          toast.dismiss();
                           toast.error('Error downloading Excel report');
                         }
                       }}
