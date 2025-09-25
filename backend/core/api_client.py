@@ -7,7 +7,7 @@ from datetime import datetime
 import aiohttp
 from aiohttp import ClientTimeout, ClientError
 import backoff
-from openai import AsyncOpenAI
+# Removed AsyncOpenAI - using direct aiohttp calls for better OpenRouter compatibility
 
 from config.settings import get_settings
 from core.cache_manager import CacheManager
@@ -40,15 +40,13 @@ class OpenRouterClient:
         else:
             self.cache = None
 
-        # Initialize OpenAI client with OpenRouter configuration
-        self.client = AsyncOpenAI(
-            base_url=self.base_url,
-            api_key=self.api_key,
-            default_headers={
-                "HTTP-Referer": "https://github.com/foresight-analyzer",
-                "X-Title": "Foresight Analyzer"
-            }
-        )
+        # Store headers for OpenRouter API calls
+        self.headers = {
+            "Authorization": f"Bearer {self.api_key}",
+            "Content-Type": "application/json",
+            "HTTP-Referer": "https://foresight-analyzer.netlify.app",
+            "X-Title": "Foresight Analyzer"
+        }
 
     @backoff.on_exception(
         backoff.expo,
@@ -126,32 +124,40 @@ class OpenRouterClient:
         start_time = datetime.now()
 
         try:
-            # Prepare request parameters
-            request_params = {
+            # Prepare request body for OpenRouter
+            request_body = {
                 "model": model,
                 "messages": [
                     {"role": "user", "content": prompt}
                 ],
                 "temperature": temperature,
-                "max_tokens": max_tokens,
-                "timeout": self.timeout
+                "max_tokens": max_tokens
             }
 
-            # Add web search configuration if enabled
-            if enable_web_search:
-                request_params["extra_body"] = {
-                    "web_search": {
-                        "engine": "native"
-                    }
-                }
+            # Make direct HTTP call to OpenRouter
+            async with aiohttp.ClientSession() as session:
+                async with session.post(
+                    f"{self.base_url}/chat/completions",
+                    headers=self.headers,
+                    json=request_body,
+                    timeout=ClientTimeout(total=self.timeout)
+                ) as response:
+                    response_data = await response.json()
 
-            response = await self.client.chat.completions.create(**request_params)
+                    # Check for errors
+                    if response.status != 200:
+                        error_msg = response_data.get('error', {}).get('message', 'Unknown error')
+                        raise Exception(f"API error {response.status}: {error_msg}")
 
             # Calculate response time
             response_time = (datetime.now() - start_time).total_seconds()
 
-            # Extract the response
-            content = response.choices[0].message.content if response.choices else ""
+            # Extract the response from OpenRouter format
+            content = ""
+            if 'choices' in response_data and len(response_data['choices']) > 0:
+                content = response_data['choices'][0]['message']['content']
+            else:
+                logger.warning(f"No choices in response from {model}")
 
             # Log response statistics
             response_length = len(content) if content else 0
@@ -209,14 +215,15 @@ class OpenRouterClient:
                 logger.warning(f"Extracted probability {probability} is out of bounds, setting to None")
                 probability = None
 
-            # Extract log probabilities if available
+            # Extract log probabilities if available (OpenRouter may not provide these)
             log_probs = None
-            if hasattr(response.choices[0], 'logprobs') and response.choices[0].logprobs:
-                try:
-                    # Convert to serializable format
-                    log_probs = str(response.choices[0].logprobs)
-                except:
-                    log_probs = None
+            if 'choices' in response_data and len(response_data['choices']) > 0:
+                choice = response_data['choices'][0]
+                if 'logprobs' in choice and choice['logprobs']:
+                    try:
+                        log_probs = str(choice['logprobs'])
+                    except:
+                        log_probs = None
 
             result = {
                 "model": model,
@@ -226,9 +233,9 @@ class OpenRouterClient:
                 "probability": probability,
                 "log_probabilities": log_probs,
                 "usage": {
-                    "prompt_tokens": response.usage.prompt_tokens if response.usage else 0,
-                    "completion_tokens": response.usage.completion_tokens if response.usage else 0,
-                    "total_tokens": response.usage.total_tokens if response.usage else 0
+                    "prompt_tokens": response_data.get('usage', {}).get('prompt_tokens', 0),
+                    "completion_tokens": response_data.get('usage', {}).get('completion_tokens', 0),
+                    "total_tokens": response_data.get('usage', {}).get('total_tokens', 0)
                 },
                 "status": "rejected" if is_rejected else "success",
                 "response_source": "api"
@@ -654,12 +661,13 @@ class OpenRouterClient:
             True if connection successful
         """
         try:
-            # Try a simple query to test the connection
+            # Try a simple query with a free model to test the connection
             response = await self.query_model(
-                model="openai/gpt-3.5-turbo",
-                prompt="Say 'test successful' if you can read this.",
+                model="x-ai/grok-4-fast:free",
+                prompt="Reply with just: OK",
                 max_tokens=10,
-                enable_web_search=False  # No need for web search on connection test
+                temperature=0.1,
+                enable_web_search=False
             )
             return response.get("status") == "success"
         except Exception as e:
